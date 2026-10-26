@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[DEMO] Tiệm Bánh & Cà Phê Mộc — Trang Mẫu Trình Diễn Bán Hàng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #d97706;
+      --primary-hover: #b45309;
+      --bg: #0c0f17;
+      --card-bg: #151b28;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 60px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .demo-watermark {
+      background: #78350f;
+      color: #fef3c7;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 18px; }
+    header {
+      padding: 24px 0 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .brand-name { font-size: 20px; font-weight: 800; color: #fbbf24; letter-spacing: -0.02em; }
+    .brand-sub { font-size: 12px; color: var(--text-muted); }
+    .btn-call {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--accent);
+      color: #fbbf24;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero {
+      padding: 32px 0 24px;
+      text-align: center;
+    }
+    .badge-pill {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 999px;
+      color: #fbbf24;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    h1 { font-size: 28px; font-weight: 800; line-height: 1.3; margin-bottom: 12px; }
+    .hero p { font-size: 15px; color: var(--text-muted); max-width: 580px; margin: 0 auto 20px; }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-main {
+      background: var(--primary);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14.5px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-main:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* Menu Section */
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 36px 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 580px) { .menu-grid { grid-template-columns: 1fr; } }
+    .menu-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .item-title { font-size: 15px; font-weight: 700; color: #f8fafc; }
+    .item-price { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: #fbbf24; white-space: nowrap; }
+    .item-desc { font-size: 12.5px; color: var(--text-muted); margin: 6px 0 12px; }
+    .btn-add {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-add:hover { background: rgba(245, 158, 11, 0.2); border-color: var(--accent); color: #fbbf24; }
+
+    /* Order / Booking Form Card */
+    .order-box {
+      background: var(--card-bg);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 14px;
+      padding: 24px;
+      margin-top: 32px;
+    }
+    .order-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .order-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; }
+    .form-group { margin-bottom: 14px; }
+    label { display: block; font-size: 12.5px; font-weight: 600; color: #cbd5e1; margin-bottom: 6px; }
+    input, select, textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: white;
+      font-size: 13.5px;
+    }
+    input:focus, textarea:focus { border-color: var(--accent); outline: none; }
+    .qr-preview {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px dashed rgba(245, 158, 11, 0.4);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      margin: 16px 0;
+    }
+    .qr-box {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 10px;
+      background: white;
+      padding: 6px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      overflow: hidden;
+    }
+    .qr-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Location Card */
+    .location-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 24px;
+      font-size: 13.5px;
+    }
+    .info-row { display: flex; gap: 10px; margin-bottom: 8px; color: #cbd5e1; }
+    .info-row strong { color: white; min-width: 110px; }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-watermark">
+    ★ BẢN MẪU TRÌNH DIỄN (DEMO MẪU CHO TIỆM BÁNH & QUÁN CAFE) — KHÔNG PHẢI GIAO DỊCH THỰC TẾ ★
+  </div>
+
+  <div class="container">
+    <header>
+      <div>
+        <div class="brand-name">Mộc Bakery & Coffee</div>
+        <div class="brand-sub">Tiệm Bánh Thủ Công & Cà Phê Mộc</div>
+      </div>
+      <a href="tel:0900000000" class="btn-call">
+        📞 Hotline: 09xx xxx xxx
+      </a>
+    </header>
+
+    <div class="hero">
+      <div class="badge-pill">Bánh Nướng Tươi Mỗi Ngày • Cà Phê Rang Mộc</div>
+      <h1>Không Gian Yên Tĩnh & Bánh Tươi Theo Yêu Cầu</h1>
+      <p>Đặt bánh sinh nhật thiết kế riêng, giao nhanh trong 2 giờ hoặc ghé tiệm thưởng thức tách cà phê pha máy trong không gian xanh mát.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-main">Xem Thực Đơn & Đặt Trước</a>
+        <a href="#location" class="btn-secondary">Địa Chỉ & Chỉ Đường</a>
+      </div>
+    </div>
+
+    <!-- Menu -->
+    <div class="section-title" id="menu">
+      <span>Thực Đơn Được Yêu Thích</span>
+      <span style="font-size: 12px; color: #fbbf24; font-weight: 600;">(Demo chọn món tức thì)</span>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="item-header">
+          <div class="item-title">Bánh Mousse Dâu Tây Tươi</div>
+          <div class="item-price">45.000 đ</div>
+        </div>
+        <div class="item-desc">Vị chua ngọt thanh mát từ dâu tây Đà Lạt, đế bánh mềm xốp ít ngọt.</div>
+        <button class="btn-add" onclick="selectItem('Bánh Mousse Dâu Tây', 45000)">+ Chọn món này</button>
+      </div>
+
+      <div class="menu-card">
+        <div class="item-header">
+          <div class="item-title">Bánh Sinh Nhật Bento Mini (10cm)</div>
+          <div class="item-price">165.000 đ</div>
+        </div>
+        <div class="item-desc">Tặng kèm nến & muỗng gỗ, nhận viết chữ theo yêu cầu của bạn.</div>
+        <button class="btn-add" onclick="selectItem('Bánh Sinh Nhật Bento', 165000)">+ Chọn món này</button>
+      </div>
+
+      <div class="menu-card">
+        <div class="item-header">
+          <div class="item-title">Cà Phê Muối Kem Béo Sài Gòn</div>
+          <div class="item-price">35.000 đ</div>
+        </div>
+        <div class="item-desc">Cà phê pha phin truyền thống hòa quyện cùng lớp kem muối bồng bềnh.</div>
+        <button class="btn-add" onclick="selectItem('Cà Phê Muối Sài Gòn', 35000)">+ Chọn món này</button>
+      </div>
+
+      <div class="menu-card">
+        <div class="item-header">
+          <div class="item-title">Trà Đào Cam Sả Mật Ong</div>
+          <div class="item-price">38.000 đ</div>
+        </div>
+        <div class="item-desc">Trà thanh mát kết hợp lát đào giòn ngọt và mùi thơm sả dịu nhẹ.</div>
+        <button class="btn-add" onclick="selectItem('Trà Đào Cam Sả', 38000)">+ Chọn món này</button>
+      </div>
+    </div>
+
+    <!-- Booking / Order Demo -->
+    <div class="order-box" id="orderBox">
+      <div class="order-title">Đặt Món & Đặt Lịch Hẹn Trước</div>
+      <div class="order-desc">Giúp tiệm chuẩn bị chu đáo và giữ bàn cho bạn không phải chờ đợi.</div>
+
+      <form onsubmit="handleDemoSubmit(event)">
+        <div class="form-group">
+          <label>Món đã chọn:</label>
+          <input type="text" id="selectedItem" value="Bánh Mousse Dâu Tây (45.000 đ)" readonly style="color: #fbbf24; font-weight: 700;" />
+        </div>
+
+        <div class="form-group">
+          <label>Tên của bạn:</label>
+          <input type="text" placeholder="Ví dụ: Chị Lan" required />
+        </div>
+
+        <div class="form-group">
+          <label>Số điện thoại / Zalo nhận xác nhận:</label>
+          <input type="tel" placeholder="09xx xxx xxx" required />
+        </div>
+
+        <div class="form-group">
+          <label>Thời gian bạn ghé lấy hoặc nhận bàn:</label>
+          <input type="text" placeholder="Ví dụ: 15:30 chiều nay" required />
+        </div>
+
+        <div class="qr-preview">
+          <div class="qr-box">
+            <img src="https://img.vietqr.io/image/tpbank-03062004000-compact2.png?amount=50000&addInfo=COC%20DEMO" alt="VietQR TPBank 03062004000" />
+          </div>
+          <div style="font-size: 13.5px; color: #fbbf24; font-weight: 700;">
+            TPBank • STK: 0306 2004 000
+          </div>
+          <div style="font-size: 12px; color: #cbd5e1; margin-top: 2px;">
+            Mã VietQR đặt cọc mẫu (50.000 đ) • Tự động gắn nội dung chuyển khoản
+          </div>
+          <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">
+            Khách quét trực tiếp bằng ứng dụng ngân hàng bất kỳ để thanh toán 24/7.
+          </div>
+        </div>
+
+        <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer;">
+          XÁC NHẬN ĐẶT HẸN (BẢN MẪU THỬ NGHIỆM)
+        </button>
+      </form>
+    </div>
+
+    <!-- Location & Opening Hours -->
+    <div class="location-box" id="location">
+      <div style="font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #fbbf24;">Thông Tin Cơ Sở & Giờ Mở Cửa</div>
+      <div class="info-row">
+        <strong>Địa chỉ tiệm:</strong>
+        <span>123 Đường Mẫu, Phường Demo, Quận Thử Nghiệm, TP.HCM</span>
+      </div>
+      <div class="info-row">
+        <strong>Giờ hoạt động:</strong>
+        <span>07:00 – 22:00 (Mở cửa tất cả các ngày trong tuần)</span>
+      </div>
+      <div class="info-row">
+        <strong>Tiện ích có sẵn:</strong>
+        <span>Wifi tốc độ cao, máy lạnh, bãi giữ xe máy miễn phí trước tiệm</span>
+      </div>
+      <div style="margin-top: 14px;">
+        <a href="https://maps.google.com/?q=Ho+Chi+Minh+City" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; padding: 7px 14px; text-decoration: none; border-radius: 6px;">
+          📍 Mở Trực Tiếp Trên Google Maps
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <div>Bản quyền thiết kế thuộc về <strong>Autonomous AI Business Engine</strong></div>
+      <div style="margin-top: 4px; font-size: 11.5px;">
+        Gói Landing Page bàn giao trong 6 giờ • Tích hợp VietQR, Google Maps & Đặt lịch Zalo • Giá thử nghiệm: 500.000 – 750.000 đ
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function selectItem(name, price) {
+      document.getElementById('selectedItem').value = name + ' (' + price.toLocaleString('vi-VN') + ' đ)';
+      document.getElementById('orderBox').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function handleDemoSubmit(e) {
+      e.preventDefault();
+      alert('Cảm ơn bạn! Đây là trang web trình diễn (Demo). Trên website thật, thông tin này sẽ gửi thông báo tức thì về điện thoại hoặc Zalo của chủ tiệm.');
+    }
+  </script>
+</body>
+</html>
